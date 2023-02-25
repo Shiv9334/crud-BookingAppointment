@@ -21,15 +21,21 @@ function additems(e) {
 
   let newobj = JSON.stringify(obj);
 
-  axios.post("https://crudcrud.com/api/b1b8a9fd64fd48edb2a72bf3ba8ba43b/appointmentData",obj)
+  window.addEventListener("DOMContentLoaded",() => {
+  axios.get("https://crudcrud.com/api/b1b8a9fd64fd48edb2a72bf3ba8ba43b/appointmentData",obj)
   .then((response) => {
-    showNewUserOnScreen(response.data)
-    //console.log(response)
+    console.log(response)
+    for(var i=0;i<response.data.length;i++){
+       showNewUserOnScreen(response.data)
+
+    }
   })
   .catch((error) =>{
-    document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
+   // document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
     console.log(error)
   })
+
+});
  // localStorage.setItem(email.value, newobj);
   // console.log(newobj)
 
